@@ -11,15 +11,11 @@
 
     <h1>Dynamic YAML SVG Renderer</h1>
 
-    <div class="svg-container">
-        <svg id="dynamic-svg" width="200" height="200" viewBox="0 0 200 200">
-        </svg>
-    </div>
     <div class="example_wrapper">
       
-        <script src="floorplan-examples.js"></script>
-        <script src="../assets/js/tabs.js"></script>
-        <link rel="stylesheet" href="../assets/css/tabs.css">
+        <script src="script.js"></script>
+        <script src="/assets/js/tabs.js"></script>
+        <link rel="stylesheet" href="/assets/css/tabs.css">
       
         <div class="tab">
           <button class="tablinks active" onclick="showTab(event, '{{ e.example_name }}-floorplan')">Floorplan</button>
@@ -50,10 +46,6 @@
           </div>
       
         </div>
-      
-        {% endif %}
-      
-        {% endfor %}
       
       </div>
 
