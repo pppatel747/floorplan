@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <h1>Dynamic YAML SVG Renderer</h1>
+    <h1>Floorplan Demo</h1>
 
     <div class="example_wrapper">
   
@@ -19,8 +19,8 @@
     
         <div class="tab">
             <button class="tablinks active" onclick="showTab(event, 'floorplanner_home-floorplan')">Floorplan</button>
-            <button class="tablinks" onclick="showTab(event, 'floorplanner_home-yaml')">YAML</button>
-            <button class="tablinks" onclick="showTab(event, 'floorplanner_home-css')">CSS</button>
+            <!-- <button class="tablinks" onclick="showTab(event, 'floorplanner_home-yaml')">YAML</button>
+            <button class="tablinks" onclick="showTab(event, 'floorplanner_home-css')">CSS</button> -->
         </div>
     
         <div class="tabcontent-container">
@@ -44,29 +44,29 @@
     </div>
     
     <script>
-        // Function to fetch and display YAML content
-        function loadYaml() {
-            fetch('/examples/floorplanner_home/floorplanner_home.yaml')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('yaml-content').textContent = data;
-                })
-                .catch(error => {
-                    document.getElementById('yaml-content').textContent = "Error loading YAML.";
-                });
-        }
+         // Function to fetch and display YAML content
+        // function loadYaml() { 
+            //fetch('/examples/floorplanner_home/floorplanner_home.yaml')
+                //.then(response => response.text())
+                //.then(data => {
+                    //document.getElementById('yaml-content').textContent = data;
+                //})
+                //.catch(error => {
+                    //document.getElementById('yaml-content').textContent = "Error loading YAML.";
+                //});
+        //} 
     
         // Function to fetch and display CSS content
-        function loadCss() {
-            fetch('/examples/floorplanner_home/floorplanner_home.css')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('css-content').textContent = data;
-                })
-                .catch(error => {
-                    document.getElementById('css-content').textContent = "Error loading CSS.";
-                });
-        }
+        //function loadCss() {
+            //fetch('/examples/floorplanner_home/floorplanner_home.css')
+                //.then(response => response.text())
+                //.then(data => {
+                    //document.getElementById('css-content').textContent = data;
+                //})
+                //.catch(error => {
+                    //document.getElementById('css-content').textContent = "Error loading CSS.";
+                //});
+        //} 
     
         // Load content when the page loads
         document.addEventListener("DOMContentLoaded", function() {
