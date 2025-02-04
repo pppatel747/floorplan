@@ -1,0 +1,58 @@
+title: MyHome
+config:
+  image: /local/floorplan/examples/MyHome/MyHome.svg
+  stylesheet: /local/floorplan/examples/MyHome/MyHome.css
+
+  defaults:
+      hover_action: hover-info
+      tap_action: more-info
+          
+  rules:
+    - element: Light-bedroom
+      entity: light.bedroom
+      state_action:
+        service: floorplan.class_set
+        service_data: '${(entity.state === "on") ? "light-on" : "light-off"}'
+      tap_action: light.toggle
+
+    - element: Light-living_room
+      entity: light.livingroom
+      state_action:
+        service: floorplan.class_set
+        service_data: '${(entity.state === "on") ? "light-on" : "light-off"}'
+      tap_action: light.toggle
+
+    - element: Light-kitchen_
+      entity: light.kitchen
+      state_action:
+        service: floorplan.class_set
+        service_data: '${(entity.state === "on") ? "light-on" : "light-off"}'
+      tap_action: light.toggle
+
+    - element: Light-home_office
+      entity: light.homeoffice
+      state_action:
+        service: floorplan.class_set
+        service_data: '${(entity.state === "on") ? "light-on" : "light-off"}'
+      tap_action: light.toggle
+
+    - element: living-flame
+      entity: switch.plug_heater
+      state_action:
+        service: floorplan.class_set
+        service_data: flame-${entity.state}
+
+    - element: living-heater
+      entity: switch.plug_heater
+      tap_action: toggle
+
+    - element: sensor.temperature
+      entity: sensor.temperature
+      state_action:
+        - service: floorplan.text_set
+          service_data: '${(entity.state !== undefined) ? Math.round(entity.state * 10) / 10 + "°" : "unknown"}'
+        - service: floorplan.class_set
+          service_data:
+            class: 'static-temp'
+
+       

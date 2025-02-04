@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAML to SVG Renderer</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body>
+
+    <h1>Dynamic YAML SVG Renderer</h1>
+
+    <div class="svg-container">
+        <svg id="dynamic-svg" width="200" height="200" viewBox="0 0 200 200">
+        </svg>
+    </div>
+    <div class="example_wrapper">
+      
+        <script src="floorplan-examples.js"></script>
+        <script src="../assets/js/tabs.js"></script>
+        <link rel="stylesheet" href="../assets/css/tabs.css">
+      
+        <div class="tab">
+          <button class="tablinks active" onclick="showTab(event, '{{ e.example_name }}-floorplan')">Floorplan</button>
+          <!-- <button class="tablinks" onclick="showTab(event, '{{ e.example_name }}-yaml')">YAML</button> -->
+          <!-- <button class="tablinks" onclick="showTab(event, '{{ e.example_name }}-css')">CSS</button> -->
+        </div>
+      
+        <div class="tabcontent-container {% if e.example_classes %}{{ e.example_classes }}{%endif%}">
+      
+          <div data-tab="{{ e.example_name }}-floorplan" class="tabcontent active">
+            <floorplan-examples examplespath="examples/" data-include="{{ e.example_name }}"></floorplan-examples>
+          </div>
+      
+          <div data-tab="{{ e.example_name }}-yaml" class="tabcontent">
+      
+      {% highlight yaml %}
+      {% include_relative /examples/{{ e.example_name }}/{{ e.example_name }}.yaml %}
+      {% endhighlight %}
+      
+          </div>
+      
+          <div data-tab="{{ e.example_name }}-css" class="tabcontent">
+      
+      {% highlight css %}
+      {% include_relative floorplan/examples/{{ e.example_name }}/{{ e.example_name }}.css %}
+      {% endhighlight %}
+      
+          </div>
+      
+        </div>
+      
+        {% endif %}
+      
+        {% endfor %}
+      
+      </div>
+
+    <script src="scriptroot.js"></script>
+
+</body>
+</html>
+

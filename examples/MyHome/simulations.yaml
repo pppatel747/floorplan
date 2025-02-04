@@ -1,0 +1,31 @@
+simulations:
+  - entities:
+      - light.livingroom
+      - light.kitchen
+      - light.homeoffice
+      - light.bedroom
+    states:
+      - state: on
+
+  - entities:
+      - light.livingroom
+      - light.kitchen
+      - light.homeoffice
+      - light.bedroom
+    states:
+      - state: off
+
+  - entity: sensor.temperature
+    states:
+      - state: 23.3
+        duration: 1
+      - state: 23.2
+        duration: 1
+      - state: 23.0
+        duration: 1
+      - state: 23.3
+        duration: 2
+
+  - entity: switch.plug_heater
+    states:
+      - state: on

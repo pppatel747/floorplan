@@ -1,0 +1,23 @@
+/* All Good :/ */
+.light-on {
+    opacity: 0 !important;
+    transition: opacity .25s;
+    -moz-transition: opacity .25s;
+    -webkit-transition: opacity .25s;
+}
+
+.light-off {
+    /*opacity: 0.9;*/
+    fill: rgb(2626269d)!important;
+    transition: opacity .25s;
+    -moz-transition: opacity .25s;
+    -webkit-transition: opacity .25s;
+}
+
+.flame-on {
+    visibility: visible
+}
+
+.flame-off {
+    visibility: hidden;
+}
