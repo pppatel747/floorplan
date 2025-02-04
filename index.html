@@ -12,42 +12,68 @@
     <h1>Dynamic YAML SVG Renderer</h1>
 
     <div class="example_wrapper">
-      
+  
         <script src="script.js"></script>
         <script src="/assets/js/tabs.js"></script>
         <link rel="stylesheet" href="/assets/css/tabs.css">
-      
+    
         <div class="tab">
-          <button class="tablinks active" onclick="showTab(event, '{{ e.example_name }}-floorplan')">Floorplan</button>
-          <!-- <button class="tablinks" onclick="showTab(event, '{{ e.example_name }}-yaml')">YAML</button> -->
-          <!-- <button class="tablinks" onclick="showTab(event, '{{ e.example_name }}-css')">CSS</button> -->
+            <button class="tablinks active" onclick="showTab(event, 'floorplanner_home-floorplan')">Floorplan</button>
+            <button class="tablinks" onclick="showTab(event, 'floorplanner_home-yaml')">YAML</button>
+            <button class="tablinks" onclick="showTab(event, 'floorplanner_home-css')">CSS</button>
         </div>
-      
-        <div class="tabcontent-container {% if e.example_classes %}{{ e.example_classes }}{%endif%}">
-      
-          <div data-tab="{{ e.example_name }}-floorplan" class="tabcontent active">
-            <floorplan-examples examplespath="examples/" data-include="{{ e.example_name }}"></floorplan-examples>
-          </div>
-      
-          <div data-tab="{{ e.example_name }}-yaml" class="tabcontent">
-      
-      {% highlight yaml %}
-      {% include_relative /examples/{{ e.example_name }}/{{ e.example_name }}.yaml %}
-      {% endhighlight %}
-      
-          </div>
-      
-          <div data-tab="{{ e.example_name }}-css" class="tabcontent">
-      
-      {% highlight css %}
-      {% include_relative floorplan/examples/{{ e.example_name }}/{{ e.example_name }}.css %}
-      {% endhighlight %}
-      
-          </div>
-      
+    
+        <div class="tabcontent-container">
+    
+            <!-- Floorplan SVG Example -->
+            <div data-tab="floorplanner_home-floorplan" class="tabcontent active">
+                <floorplan-examples examplespath="examples/floorplanner_home/" data-include="floorplanner_home"></floorplan-examples>
+            </div>
+    
+            <!-- YAML Configuration -->
+            <div data-tab="floorplanner_home-yaml" class="tabcontent">
+                <pre id="yaml-content">Loading YAML...</pre>
+            </div>
+    
+            <!-- CSS Styles -->
+            <div data-tab="floorplanner_home-css" class="tabcontent">
+                <pre id="css-content">Loading CSS...</pre>
+            </div>
+    
         </div>
-      
-      </div>
+    </div>
+    
+    <script>
+        // Function to fetch and display YAML content
+        function loadYaml() {
+            fetch('/examples/floorplanner_home/floorplanner_home.yaml')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('yaml-content').textContent = data;
+                })
+                .catch(error => {
+                    document.getElementById('yaml-content').textContent = "Error loading YAML.";
+                });
+        }
+    
+        // Function to fetch and display CSS content
+        function loadCss() {
+            fetch('/examples/floorplanner_home/floorplanner_home.css')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('css-content').textContent = data;
+                })
+                .catch(error => {
+                    document.getElementById('css-content').textContent = "Error loading CSS.";
+                });
+        }
+    
+        // Load content when the page loads
+        document.addEventListener("DOMContentLoaded", function() {
+            loadYaml();
+            loadCss();
+        });
+    </script>    
 
     <script src="scriptroot.js"></script>
 
