@@ -32,15 +32,4 @@ async function loadYAML() {
         console.error("Error loading YAML:", error);
     }
 }
-
-document.addEventListener("DOMContentLoaded", loadYAML);
-
-window.onload = function () {
-    function sendHeight() {
-      var height = document.documentElement.scrollHeight;
-      window.parent.postMessage(height, "*");
-    }
-    sendHeight();
-    window.addEventListener("resize", sendHeight);
-  };
   
